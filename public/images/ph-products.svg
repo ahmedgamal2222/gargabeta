@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="تشكيلة المصنعات">
+  <rect width="640" height="480" rx="26" fill="#FFF6E4" />
+  <ellipse cx="320" cy="268" rx="232" ry="122" fill="#FFFDF5" />
+  <g fill="#9C4A2A">
+    <rect x="120" y="196" width="180" height="40" rx="20" transform="rotate(-8 210 216)" />
+    <rect x="140" y="250" width="180" height="40" rx="20" transform="rotate(4 230 270)" />
+    <circle cx="420" cy="216" r="40" />
+    <circle cx="430" cy="300" r="36" />
+    <rect x="240" y="300" width="150" height="38" rx="19" transform="rotate(-6 315 319)" />
+  </g>
+  <g fill="#8CC63F" opacity="0.85">
+    <ellipse cx="180" cy="330" rx="26" ry="10" transform="rotate(-20 180 330)" />
+    <ellipse cx="480" cy="250" rx="24" ry="9" transform="rotate(18 480 250)" />
+  </g>
+  <text x="320" y="438" text-anchor="middle" direction="rtl" font-family="Cairo, 'Segoe UI', Tahoma, sans-serif" font-size="24" font-weight="900" fill="#2E5B1F">تشكيلة المصنعات</text>
+</svg>

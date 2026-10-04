@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="العيش والإضافات">
+  <rect width="640" height="480" rx="26" fill="#FFFAEC" />
+  <ellipse cx="320" cy="272" rx="228" ry="118" fill="#FFFDF5" />
+  <path d="M150 268c0-38 38-62 90-62s90 24 90 62-38 54-90 54-90-16-90-54z" fill="#E8B96A" />
+  <path d="M150 268c0-38 38-62 90-62s90 24 90 62" fill="none" stroke="#C8933F" stroke-width="4" />
+  <g stroke="#C8933F" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M200 232l18 26" /><path d="M240 222l18 30" /><path d="M280 228l14 28" />
+  </g>
+  <path d="M350 300c0-40 26-70 70-70s70 30 70 70z" fill="#8CC63F" opacity="0.85" />
+  <path d="M344 300h152c0 28-22 46-52 46h-48c-30 0-52-18-52-46z" fill="#F5A623" />
+  <text x="320" y="438" text-anchor="middle" direction="rtl" font-family="Cairo, 'Segoe UI', Tahoma, sans-serif" font-size="24" font-weight="900" fill="#2E5B1F">عيش بلدي وإضافات</text>
+</svg>

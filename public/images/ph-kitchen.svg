@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="تجهيز الطلبات">
+  <rect width="640" height="480" rx="26" fill="#F4F8F1" />
+  <rect x="90" y="120" width="460" height="18" rx="9" fill="#C9D6C2" />
+  <rect x="120" y="250" width="400" height="110" rx="12" fill="#FFFDF5" stroke="#B9C9AE" stroke-width="4" />
+  <rect x="120" y="250" width="400" height="26" rx="12" fill="#8CC63F" opacity="0.5" />
+  <g>
+    <path d="M250 132c0-30 24-52 54-52h32c30 0 54 22 54 52z" fill="#FFFDF5" stroke="#B9C9AE" stroke-width="4" />
+    <rect x="250" y="132" width="140" height="24" rx="10" fill="#DDE7D6" />
+  </g>
+  <g fill="#9C4A2A">
+    <rect x="160" y="300" width="110" height="36" rx="14" />
+    <rect x="290" y="300" width="110" height="36" rx="14" />
+    <rect x="420" y="300" width="76" height="36" rx="14" />
+  </g>
+  <g stroke="#F5A623" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M200 210c-12 16 12 22 0 38" /><path d="M420 206c-12 16 12 22 0 38" />
+  </g>
+  <text x="320" y="438" text-anchor="middle" direction="rtl" font-family="Cairo, 'Segoe UI', Tahoma, sans-serif" font-size="24" font-weight="900" fill="#2E5B1F">تجهيز الطلبات داخل المطبخ</text>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="جاهز للتسوية">
+  <rect width="640" height="480" rx="26" fill="#FFF4E2" />
+  <rect x="120" y="190" width="400" height="160" rx="18" fill="#E6E0D6" stroke="#B9AE9C" stroke-width="4" />
+  <rect x="140" y="208" width="360" height="124" rx="12" fill="#FFFDF5" />
+  <g fill="#9C4A2A">
+    <rect x="160" y="226" width="150" height="40" rx="14" />
+    <rect x="330" y="226" width="150" height="40" rx="14" />
+    <rect x="180" y="280" width="280" height="40" rx="14" />
+  </g>
+  <g fill="#E9C46A">
+    <circle cx="320" cy="150" r="26" />
+    <circle cx="250" cy="158" r="18" />
+    <circle cx="392" cy="158" r="18" />
+  </g>
+  <g stroke="#8CC63F" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M170 380c26-18 52-18 78 0" /><path d="M330 388c26-18 52-18 78 0" />
+  </g>
+  <text x="320" y="438" text-anchor="middle" direction="rtl" font-family="Cairo, 'Segoe UI', Tahoma, sans-serif" font-size="24" font-weight="900" fill="#2E5B1F">جاهز للفرن أو الشواية</text>
+</svg>

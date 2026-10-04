@@ -1,0 +1,218 @@
+/**
+ * بيانات احتياطية مطابقة تمامًا لملف backend/seed.sql
+ * تُستخدم إذا لم يكن الـ API (HonoJS + D1) متصلًا — فيعمل الموقع كاملًا دون باك-إند.
+ */
+import type { Category, MediaItem, MenuItem, SiteBundle, SiteSettings } from './types'
+
+export const fallbackSettings: SiteSettings = {
+  brandName: 'جرجبيتا',
+  brandTagline: 'لحوم طازجة ومصنعات — أسوان',
+  logoUrl: '/images/logo.svg',
+  heroTitle: 'لحوم بلدي طازجة ومصنعات على الطلب',
+  heroSubtitle:
+    'من قلب أسوان: مصنعات مجهّزة يوميًا، مشويات على الفحم، وتوصيل لحد باب البيت. اطلب من الواتساب في دقيقة.',
+  heroImage: '/images/hero-meat.svg',
+  aboutTitle: 'ليه جرجبيتا؟',
+  aboutText:
+    'جرجبيتا مش مجرد محل لحوم — إحنا بصمة طعم. بنختار اللحوم البلدي الطازجة يوميًا، ونجهّز المصنعات قدامك (سجق، كفتة، برجر، بسطرمة وشاورما) بمقادير مظبوطة وبدون إضافات صناعية. وعندنا مطبخ يقدّم المشويات والطواجن والساندوتشات الساخنة في نفس الوقت.',
+  address: 'أسوان — شارع كورنيش النيل (عدّل العنوان من لوحة التحكم)',
+  mapUrl: 'https://maps.google.com/?q=Aswan',
+  hours: 'يوميًا من 10:00 صباحًا حتى 12:00 منتصف الليل',
+  phone: '01159353495',
+  whatsappNumbers: [{ label: 'الطلبات — الخط الأساسي', number: '201159353495', isDefault: true }],
+  currency: 'ج.م',
+  deliveryNote: 'التوصيل داخل أسوان — رسوم التوصيل حسب المنطقة',
+  minOrder: 'الحد الأدنى للطلب: 150 ج.م',
+  instagram: '',
+  facebook: '',
+  tiktok: '',
+}
+
+type CategorySeed = [id: number, slug: string, nameAr: string, nameEn: string, descriptionAr: string, section: 'restaurant' | 'products', icon: string]
+
+const categorySeed: CategorySeed[] = [
+  [1, 'processed-meat', 'مصنعات اللحوم', 'Beef Products', 'سجق بلدي، كفتة، برجر، مفروم وكبدة — تجهيز يومي بمقادير مظبوطة.', 'products', 'beef'],
+  [2, 'chicken-products', 'مصنعات الفراخ', 'Chicken Products', 'شاورما فراخ، سوسيس وبرجر فراخ من صدور طازجة.', 'products', 'drumstick'],
+  [3, 'cold-cuts', 'لانشون وبسطرمة', 'Cold Cuts', 'لانشون لحم وفراخ، بسطرمة وروسي — تقطيع على الطلب.', 'products', 'package'],
+  [4, 'ready-to-cook', 'جاهز للتسوية', 'Ready to Cook', 'حواوشي مجهز، صواني كفتة وبطاطس، وطرب محشي — للفرن أو الشواية.', 'products', 'flame'],
+  [5, 'grills', 'المشويات', 'Grills', 'كباب، كفتة، ريش وفراخ على الفحم — تُحضَّر بعد الطلب.', 'restaurant', 'flame'],
+  [6, 'tagen', 'طواجن وفتة', 'Tagens', 'طواجن ساخنة وفتة لحم بالعيش البلدي.', 'restaurant', 'cooking-pot'],
+  [7, 'sandwiches', 'الساندوتشات', 'Sandwiches', 'ساندوتشات كباب، كفتة، حواوشي وشاورما في عيش بلدي ساخن.', 'restaurant', 'sandwich'],
+  [8, 'extras', 'العيش والإضافات', 'Extras', 'عيش بلدي، أرز بالخلطة، سلطات ومخللات.', 'restaurant', 'salad'],
+  [9, 'drinks', 'المشروبات', 'Drinks', 'مشروبات باردة وساخنة وعصائر طازجة.', 'restaurant', 'cup-soda'],
+]
+
+/** صور المعاينة المؤقتة لكل قسم (تُستبدل بصور المطعم الحقيقية من لوحة التحكم) */
+const CATEGORY_PREVIEW: Record<number, string> = {
+  1: '/images/ph-meat.svg',
+  2: '/images/ph-chicken.svg',
+  3: '/images/ph-coldcut.svg',
+  4: '/images/ph-ready.svg',
+  5: '/images/ph-grill.svg',
+  6: '/images/ph-tagen.svg',
+  7: '/images/ph-sandwich.svg',
+  8: '/images/ph-side.svg',
+  9: '/images/ph-drink.svg',
+}
+
+export const fallbackCategories: Category[] = categorySeed.map(
+  ([id, slug, nameAr, nameEn, descriptionAr, section, icon], index) => ({
+    id,
+    slug,
+    nameAr,
+    nameEn,
+    descriptionAr,
+    section,
+    imageUrl: CATEGORY_PREVIEW[id] ?? null,
+    icon,
+    sortOrder: index + 1,
+    isActive: 1,
+  })
+)
+
+/** [categoryId, nameAr, price, unitAr, descriptionAr, isFeatured, tagsAr] */
+type ItemSeed = [number, string, number, string, string, number, string]
+
+const itemSeed: ItemSeed[] = [
+  [1, 'سجق بلدي حريف', 420, 'كيلو', 'سجق لحم بلدي بتوابل جرجبيتا الخاصة — حار شوية ومظبوط.', 1, 'الأكثر طلبًا'],
+  [1, 'سجق بلدي وسط', 410, 'كيلو', 'سجق بلدي بدون حرارة زائدة — مناسب للكل.', 0, ''],
+  [1, 'كفتة بلدي', 430, 'كيلو', 'كفتة لحم مفروم طازج بالبقدونس والبصل — جاهزة للشوي.', 1, 'الأكثر طلبًا'],
+  [1, 'برجر لحم بلدي', 390, 'كيلو', 'أقراص برجر سميكة 150 جم للحبة — تشويح أو شوي.', 0, ''],
+  [1, 'مفروم بلدي', 400, 'كيلو', 'لحم بلدي مفروم طازج — نسبة دهن مظبوطة.', 0, ''],
+  [1, 'كبدة إسكندراني', 350, 'كيلو', 'كبدة بلدي متبلة بالفلفل والليمون — للتشويح السريع.', 0, 'جديد'],
+  [2, 'شاورما فراخ متبلة', 330, 'كيلو', 'صدور فراخ متبلة بتوابل الشاورما — للتشويح أو الشوي.', 1, 'الأكثر طلبًا'],
+  [2, 'سوسيس فراخ', 300, 'كيلو', 'سوسيس فراخ بمقادير بيتية بدون مواد حافظة.', 0, ''],
+  [2, 'برجر فراخ', 320, 'كيلو', 'أقراص برجر فراخ بانية — مقرمشة بعد الشوي.', 0, ''],
+  [2, 'كفتة فراخ', 310, 'كيلو', 'كفتة فراخ بالبصل والأعشاب.', 0, ''],
+  [3, 'لانشون لحم', 350, 'كيلو', 'لانشون لحم بلدي — تقطيع حسب الطلب.', 0, ''],
+  [3, 'لانشون فراخ', 300, 'كيلو', 'لانشون فراخ خفيف مناسب للسندوتشات.', 0, ''],
+  [3, 'بسطرمة بلدي', 550, 'كيلو', 'بسطرمة بلدي متبلة بالحلبة والثوم — تجهيز خاص.', 1, 'مميز'],
+  [3, 'روسي بلدي', 340, 'كيلو', 'روسي لحم بلدي بالفستق — للأطفال والسندوتشات.', 0, ''],
+  [4, 'حواوشي مجهز', 330, 'طبق', 'حواوشي لحم مبهر جاهز للفرن — 6 حبات.', 1, 'الأكثر طلبًا'],
+  [4, 'صينية كفتة بالبطاطس', 360, 'صينية', 'صينية جاهزة للفرن: كفتة + بطاطس + طماطم.', 0, ''],
+  [4, 'طرب محشي', 380, 'كيلو', 'طرب بلدي محشي باللحم والمكسرات — جاهز للشوي.', 0, 'مميز'],
+  [5, 'مشكل مشويات جرجبيتا', 650, 'كيلو', 'كباب + كفتة + شيش طاووق + ريش — يكفي 3 إلى 4 أفراد.', 1, 'الأكثر طلبًا'],
+  [5, 'كباب بلدي', 480, 'كيلو', 'كباب لحم بلدي مفروم سميك على الفحم.', 1, ''],
+  [5, 'كفتة مشوية', 430, 'كيلو', 'كفتة بلدي مشوية على الفحم مع بصل وطحينة.', 0, ''],
+  [5, 'ريش ضاني', 620, 'كيلو', 'ريش ضاني بلدي طازجة — شوي على الفحم.', 0, 'مميز'],
+  [5, 'فراخ مشوية', 320, 'وجبة', 'نصف فرخة بلدي مشوية بتوابل جرجبيتا.', 0, ''],
+  [5, 'شيش طاووق', 350, 'وجبة', 'صدور فراخ متبلة ومشوية — 5 أسياخ.', 1, ''],
+  [5, 'حمام محشي', 150, 'حبة', 'حمام بلدي محشي بالأرز والكبد.', 0, ''],
+  [6, 'طاجن كوارع', 260, 'طاجن', 'كوارع بلدي مطبوخة على نار هادية بالتوابل.', 1, ''],
+  [6, 'فتة لحم', 320, 'طبق', 'فتة بالعيش البلدي واللحم والثوم والخل.', 0, 'الأكثر طلبًا'],
+  [6, 'طاجن بطاطس باللحم', 300, 'طاجن', 'بطاطس ورقائق لحم في طاجن الطين.', 0, ''],
+  [6, 'ملوخية باللحم', 280, 'طبق', 'ملوخية خضراء باللحم البلدي والأرز.', 0, ''],
+  [6, 'رقاق باللحم', 300, 'صينية', 'رقاق بالعيش البلدي واللحم والطماطم.', 0, ''],
+  [7, 'ساندوتش كباب', 130, 'ساندوتش', 'كباب مشوي في عيش بلدي ساخن + طحينة.', 1, 'الأكثر طلبًا'],
+  [7, 'ساندوتش كفتة', 110, 'ساندوتش', 'كفتة مشوية وبصل وسلطة في عيش بلدي.', 0, ''],
+  [7, 'ساندوتش حواوشي', 90, 'ساندوتش', 'حواوشي لحم مبهر طازج من الفرن.', 0, ''],
+  [7, 'ساندوتش سجق', 85, 'ساندوتش', 'سجق بلدي مشوي مع فلفل وليمون.', 0, ''],
+  [7, 'ساندوتش شاورما لحم', 140, 'ساندوتش', 'شاورما لحم بلدي مع طحينة ومخلل.', 1, ''],
+  [7, 'ساندوتش شاورما فراخ', 110, 'ساندوتش', 'شاورما فراخ متبلة مع ثومية.', 0, ''],
+  [7, 'ساندوتش كبدة', 90, 'ساندوتش', 'كبدة إسكندراني على الصاج في عيش بلدي.', 0, 'جديد'],
+  [8, 'عيش بلدي', 5, 'حبة', 'عيش بلدي طازج من الفرن.', 0, ''],
+  [8, 'أرز بالخلطة', 60, 'طبق', 'أرز بالخلطة البلدي بالتوابل.', 0, ''],
+  [8, 'سلطة خضراء', 20, 'طبق', 'سلطة بلدي بالخضار الطازج.', 0, ''],
+  [8, 'طحينة', 20, 'طبق', 'طحينة بالليمون والثوم.', 0, ''],
+  [8, 'بصل مشوي', 20, 'طبق', 'بصل مشوي مع رشّة سمّاق.', 0, ''],
+  [8, 'مخلل', 15, 'طبق', 'مخلل بلدي مشكّل.', 0, ''],
+  [9, 'بيبسي', 20, 'زجاجة', 'مشروب غازي مثلج.', 0, ''],
+  [9, 'مياه معدنية', 10, 'زجاجة', 'مياه معدنية.', 0, ''],
+  [9, 'عصير قصب', 25, 'كوب', 'عصير قصب طازج مضروب في المكان.', 1, 'طازج'],
+  [9, 'ليمون بالنعناع', 30, 'كوب', 'ليمون بالنعناع الطازج.', 0, ''],
+  [9, 'شاي بلدي', 15, 'كوب', 'شاي بلدي بالنعناع.', 0, ''],
+  [9, 'قهوة تركي', 30, 'كوب', 'قهوة تركي على الأصول.', 0, ''],
+]
+
+export const fallbackItems: MenuItem[] = itemSeed.map(
+  ([categoryId, nameAr, price, unitAr, descriptionAr, isFeatured, tagsAr], index) => {
+    const category = fallbackCategories.find((entry) => entry.id === categoryId)
+    return {
+      id: index + 1,
+      categoryId,
+      categoryNameAr: category?.nameAr,
+      categorySection: category?.section,
+      nameAr,
+      nameEn: '',
+      descriptionAr,
+      price,
+      unitAr,
+      imageUrl: CATEGORY_PREVIEW[categoryId] ?? null,
+      isFeatured,
+      isAvailable: 1,
+      tagsAr,
+      sortOrder: index + 1,
+    }
+  }
+)
+
+export const fallbackMedia: MediaItem[] = [
+  {
+    id: 1,
+    type: 'photo',
+    titleAr: 'واجهة جرجبيتا',
+    descriptionAr: 'المحل من الخارج — استبدلها بصورة المحل من لوحة التحكم.',
+    url: '/images/ph-store.svg',
+    thumbnailUrl: '/images/ph-store.svg',
+    categoryId: null,
+    isFeatured: 1,
+    sortOrder: 1,
+    createdAt: '',
+  },
+  {
+    id: 2,
+    type: 'photo',
+    titleAr: 'تشكيلة المصنعات',
+    descriptionAr: 'سجق وكفتة وبرجر جاهزين على الطلب.',
+    url: '/images/ph-products.svg',
+    thumbnailUrl: '/images/ph-products.svg',
+    categoryId: null,
+    isFeatured: 1,
+    sortOrder: 2,
+    createdAt: '',
+  },
+  {
+    id: 3,
+    type: 'photo',
+    titleAr: 'على الفحم',
+    descriptionAr: 'المشويات تُحضَّر على الفحم بعد الطلب.',
+    url: '/images/ph-grill.svg',
+    thumbnailUrl: '/images/ph-grill.svg',
+    categoryId: null,
+    isFeatured: 1,
+    sortOrder: 3,
+    createdAt: '',
+  },
+  {
+    id: 5,
+    type: 'photo',
+    titleAr: 'صواني الفرن',
+    descriptionAr: 'صواني كفتة وحواوشي جاهزة للفرن.',
+    url: '/images/ph-ready.svg',
+    thumbnailUrl: '/images/ph-ready.svg',
+    categoryId: null,
+    isFeatured: 0,
+    sortOrder: 4,
+    createdAt: '',
+  },
+  {
+    id: 6,
+    type: 'photo',
+    titleAr: 'تجهيز الطلبات',
+    descriptionAr: 'فريق جرجبيتا يجهّز الطلبات للتوصيل.',
+    url: '/images/ph-kitchen.svg',
+    thumbnailUrl: '/images/ph-kitchen.svg',
+    categoryId: null,
+    isFeatured: 0,
+    sortOrder: 5,
+    createdAt: '',
+  },
+]
+
+/** الحزمة الكاملة للاستخدام عند عدم توفر الـ API. */
+export const fallbackBundle: SiteBundle = {
+  settings: fallbackSettings,
+  categories: fallbackCategories,
+  items: fallbackItems,
+  media: fallbackMedia,
+}

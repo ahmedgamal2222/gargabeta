@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="طواجن وفتة">
+  <rect width="640" height="480" rx="26" fill="#FFF6E8" />
+  <g stroke="#C8933F" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.7">
+    <path d="M250 120c-16 22 16 30 0 52" /><path d="M320 104c-16 22 16 30 0 52" /><path d="M390 120c-16 22 16 30 0 52" />
+  </g>
+  <path d="M150 210h340l-26 130c-4 22-22 36-44 36H220c-22 0-40-14-44-36z" fill="#B4633A" />
+  <path d="M150 210h340l-26 130c-4 22-22 36-44 36H220c-22 0-40-14-44-36z" fill="none" stroke="#8C4526" stroke-width="4" />
+  <ellipse cx="320" cy="212" rx="170" ry="26" fill="#E8B96A" />
+  <ellipse cx="320" cy="212" rx="140" ry="18" fill="#9C4A2A" />
+  <g fill="#8CC63F" opacity="0.9">
+    <ellipse cx="270" cy="208" rx="20" ry="7" transform="rotate(-12 270 208)" />
+    <ellipse cx="360" cy="214" rx="20" ry="7" transform="rotate(10 360 214)" />
+  </g>
+  <text x="320" y="438" text-anchor="middle" direction="rtl" font-family="Cairo, 'Segoe UI', Tahoma, sans-serif" font-size="24" font-weight="900" fill="#2E5B1F">طواجن وفتة ساخنة</text>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="مشويات جرجبيتا">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF6DC" />
+      <stop offset="0.55" stop-color="#FFE9C2" />
+      <stop offset="1" stop-color="#F6D9A8" />
+    </linearGradient>
+    <linearGradient id="fire" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#E24A2B" />
+      <stop offset="0.6" stop-color="#F5A623" />
+      <stop offset="1" stop-color="#FFE08A" />
+    </linearGradient>
+    <linearGradient id="meat" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9C4A2A" />
+      <stop offset="1" stop-color="#6E2F1B" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" rx="34" fill="url(#sky)" />
+  <circle cx="640" cy="130" r="76" fill="#8CC63F" opacity="0.16" />
+  <circle cx="120" cy="480" r="96" fill="#F5A623" opacity="0.14" />
+  <path d="M400 96c46 54 58 82 58 114a58 58 0 0 1-116 0c0-32 12-60 58-114z" fill="url(#fire)" opacity="0.9" />
+  <path d="M400 168c22 26 28 40 28 55a28 28 0 0 1-56 0c0-15 6-29 28-55z" fill="#FFFDF5" opacity="0.85" />
+  <g stroke="#4A3220" stroke-width="12" stroke-linecap="round">
+    <path d="M120 330h560" />
+    <path d="M120 372h560" />
+    <path d="M120 414h560" />
+  </g>
+  <g fill="url(#meat)">
+    <rect x="180" y="312" width="82" height="46" rx="20" />
+    <rect x="300" y="312" width="82" height="46" rx="20" />
+    <rect x="420" y="312" width="82" height="46" rx="20" />
+    <rect x="540" y="312" width="82" height="46" rx="20" />
+    <rect x="240" y="354" width="82" height="46" rx="20" />
+    <rect x="360" y="354" width="82" height="46" rx="20" />
+    <rect x="480" y="354" width="82" height="46" rx="20" />
+  </g>
+  <g stroke="#8CC63F" stroke-width="6" stroke-linecap="round" opacity="0.9">
+    <path d="M170 470c24-16 46-16 70 0" />
+    <path d="M300 470c24-16 46-16 70 0" />
+    <path d="M430 470c24-16 46-16 70 0" />
+    <path d="M560 470c24-16 46-16 70 0" />
+  </g>
+  <text x="400" y="540" text-anchor="middle" direction="rtl" font-family="Cairo, 'Segoe UI', Tahoma, sans-serif" font-size="38" font-weight="900" fill="#2E5B1F">لحوم بلدي طازجة ومصنعات على الطلب</text>
+</svg>

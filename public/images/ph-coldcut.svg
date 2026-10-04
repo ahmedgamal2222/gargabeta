@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="لانشون وبسطرمة">
+  <rect width="640" height="480" rx="26" fill="#FFF8EA" />
+  <ellipse cx="320" cy="272" rx="228" ry="118" fill="#FFFDF5" />
+  <ellipse cx="320" cy="272" rx="228" ry="118" fill="none" stroke="#E0CBA4" stroke-width="3" />
+  <g>
+    <ellipse cx="250" cy="252" rx="86" ry="60" fill="#D98B7E" />
+    <ellipse cx="250" cy="252" rx="86" ry="60" fill="none" stroke="#B96A5E" stroke-width="3" />
+    <circle cx="228" cy="238" r="9" fill="#F6E0D6" /><circle cx="272" cy="264" r="7" fill="#F6E0D6" /><circle cx="252" cy="282" r="6" fill="#F6E0D6" />
+    <ellipse cx="380" cy="290" rx="92" ry="62" fill="#C05A46" />
+    <ellipse cx="380" cy="290" rx="92" ry="62" fill="none" stroke="#9C4433" stroke-width="3" />
+    <ellipse cx="380" cy="290" rx="60" ry="38" fill="#D98B7E" opacity="0.7" />
+  </g>
+  <g stroke="#8CC63F" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M180 366c26-18 52-18 78 0" /><path d="M340 380c26-18 52-18 78 0" />
+  </g>
+  <text x="320" y="438" text-anchor="middle" direction="rtl" font-family="Cairo, 'Segoe UI', Tahoma, sans-serif" font-size="24" font-weight="900" fill="#2E5B1F">لانشون وبسطرمة</text>
+</svg>

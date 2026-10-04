@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="المشروبات">
+  <rect width="640" height="480" rx="26" fill="#F2FBFF" />
+  <ellipse cx="320" cy="272" rx="228" ry="118" fill="#FFFDF5" />
+  <path d="M250 160h140l-16 190c-2 22-16 34-38 34h-32c-22 0-36-12-38-34z" fill="#DFF1FA" stroke="#9CC7DA" stroke-width="4" />
+  <path d="M262 236h116l-10 114c-2 18-12 26-28 26h-40c-16 0-26-8-28-26z" fill="#8CC63F" opacity="0.75" />
+  <rect x="352" y="120" width="14" height="120" rx="7" fill="#E24A2B" transform="rotate(12 359 180)" />
+  <g fill="#FFFDF5" opacity="0.85">
+    <circle cx="300" cy="272" r="9" /><circle cx="332" cy="300" r="7" /><circle cx="312" cy="326" r="6" /><circle cx="348" cy="262" r="6" />
+  </g>
+  <g fill="#F5A623"><circle cx="430" cy="196" r="26" /><circle cx="200" cy="214" r="20" /></g>
+  <text x="320" y="438" text-anchor="middle" direction="rtl" font-family="Cairo, 'Segoe UI', Tahoma, sans-serif" font-size="24" font-weight="900" fill="#2E5B1F">مشروبات وعصائر طازجة</text>
+</svg>

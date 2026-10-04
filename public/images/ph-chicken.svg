@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="مصنعات الفراخ">
+  <defs>
+    <linearGradient id="c" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF9E8" /><stop offset="1" stop-color="#F6E0B0" /></linearGradient>
+    <linearGradient id="chick" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E8A24C" /><stop offset="1" stop-color="#C87B36" /></linearGradient>
+  </defs>
+  <rect width="640" height="480" rx="26" fill="url(#c)" />
+  <ellipse cx="320" cy="272" rx="228" ry="118" fill="#FFFDF5" opacity="0.9" />
+  <g fill="#D8954B">
+    <ellipse cx="250" cy="250" rx="72" ry="54" />
+    <rect x="292" y="272" width="120" height="26" rx="13" />
+    <ellipse cx="420" cy="300" rx="26" ry="20" fill="#F3E4CC" />
+    <ellipse cx="380" cy="196" rx="62" ry="46" />
+    <rect x="410" y="216" width="104" height="24" rx="12" />
+    <ellipse cx="500" cy="240" rx="22" ry="17" fill="#F3E4CC" />
+  </g>
+  <g stroke="#8CC63F" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M170 352c26-18 52-18 78 0" /><path d="M330 366c26-18 52-18 78 0" />
+  </g>
+  <text x="320" y="438" text-anchor="middle" direction="rtl" font-family="Cairo, 'Segoe UI', Tahoma, sans-serif" font-size="24" font-weight="900" fill="#2E5B1F">مصنعات الفراخ</text>
+</svg>

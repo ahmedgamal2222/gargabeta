@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="الساندوتشات">
+  <rect width="640" height="480" rx="26" fill="#FFF7E6" />
+  <ellipse cx="320" cy="268" rx="232" ry="122" fill="#FFFDF5" />
+  <path d="M140 300c0-70 80-120 180-120s180 50 180 120z" fill="#E8B96A" />
+  <path d="M140 300c0-70 80-120 180-120s180 50 180 120z" fill="none" stroke="#C8933F" stroke-width="4" />
+  <path d="M150 300h340c0 34-30 56-70 56H220c-40 0-70-22-70-56z" fill="#9C4A2A" />
+  <g fill="#8CC63F" opacity="0.9">
+    <ellipse cx="230" cy="232" rx="22" ry="9" transform="rotate(-16 230 232)" />
+    <ellipse cx="330" cy="212" rx="22" ry="9" transform="rotate(10 330 212)" />
+    <ellipse cx="420" cy="238" rx="22" ry="9" transform="rotate(-8 420 238)" />
+  </g>
+  <text x="320" y="438" text-anchor="middle" direction="rtl" font-family="Cairo, 'Segoe UI', Tahoma, sans-serif" font-size="24" font-weight="900" fill="#2E5B1F">ساندوتشات ساخنة</text>
+</svg>
