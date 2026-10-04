@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const apiBase =
-  process.env.NEXT_PUBLIC_API_BASE_URL ?? process.env.API_BASE_URL ?? 'http://localhost:8787';
+  process.env.NEXT_PUBLIC_API_BASE_URL ?? process.env.API_BASE_URL ?? 'https://gargabeta-api.gemya380.workers.dev';
 
 const nextConfig = {
   // static export → يولّد مجلد "out" الذي تتوقعه Cloudflare Pages
