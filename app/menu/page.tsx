@@ -9,7 +9,8 @@ import { Badge } from '@/components/ui/badge'
 import { getSiteBundle } from '@/lib/api'
 import { CartProvider } from '@/lib/cart'
 
-export const revalidate = 60
+export const revalidate = 0
+export const dynamic = 'force-static'
 
 export const metadata: Metadata = {
   title: 'المنيو — مصنعات ومشويات',

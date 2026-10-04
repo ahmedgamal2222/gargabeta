@@ -4,12 +4,13 @@ const apiBase =
   process.env.NEXT_PUBLIC_API_BASE_URL ?? process.env.API_BASE_URL ?? 'http://localhost:8787';
 
 const nextConfig = {
+  // static export → يولّد مجلد "out" الذي تتوقعه Cloudflare Pages
+  output: 'export',
+
   eslint: {
     ignoreDuringBuilds: true,
   },
 
-  // نُبقي البناء متسامحًا مع أخطاء الأنواع لتسريع التسليم
-  // وللفحص الصارم شغّل: npm run typecheck
   typescript: {
     ignoreBuildErrors: true,
   },
