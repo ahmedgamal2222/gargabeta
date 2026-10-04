@@ -1,3 +1,8 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+import { Loader2 } from 'lucide-react'
+
 import CartDrawer from '@/components/cart-drawer'
 import FloatingActions from '@/components/floating-actions'
 import Hero from '@/components/home-hero'
@@ -8,52 +13,45 @@ import SiteFooter from '@/components/site-footer'
 import SiteHeader from '@/components/site-header'
 import { getSiteBundle } from '@/lib/api'
 import { CartProvider } from '@/lib/cart'
+import { fallbackBundle } from '@/lib/fallback-data'
+import type { SiteBundle } from '@/lib/types'
 
-export const revalidate = 0
-export const dynamic = 'force-static'
+export default function HomePage() {
+  const [bundle, setBundle] = useState<SiteBundle>(fallbackBundle)
+  const [loading, setLoading] = useState(true)
 
-export default async function HomePage() {
-  const { bundle } = await getSiteBundle()
+  useEffect(() => {
+    getSiteBundle().then(({ bundle: b }) => {
+      setBundle(b)
+      setLoading(false)
+    })
+  }, [])
+
   const { settings, media } = bundle
-
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'Restaurant',
-    name: settings.brandName,
-    description: settings.heroSubtitle,
-    image: settings.logoUrl,
-    servesCuisine: ['مشويات', 'لحوم', 'مصنعات لحوم', 'مأكولات مصرية'],
-    priceRange: '$$',
-    telephone: settings.phone,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: settings.address,
-      addressLocality: 'أسوان',
-      addressCountry: 'EG',
-    },
-    openingHours: settings.hours,
-    hasMap: settings.mapUrl,
-    acceptsReservations: false,
-  }
 
   return (
     <CartProvider>
       <SiteHeader settings={settings} />
       <main className="relative overflow-hidden">
-        <Hero settings={settings} />
-        <HomeMenus bundle={bundle} settings={settings} />
-        <HomeGallery media={media} />
-        <HomeAboutContact settings={settings} />
+        {loading ? (
+          <div className="flex min-h-screen items-center justify-center">
+            <div className="flex flex-col items-center gap-4">
+              <Loader2 className="size-10 animate-spin text-primary" />
+              <p className="text-sm font-bold text-muted-foreground">جاري تحميل المنيو…</p>
+            </div>
+          </div>
+        ) : (
+          <>
+            <Hero settings={settings} />
+            <HomeMenus bundle={bundle} settings={settings} />
+            <HomeGallery media={media} />
+            <HomeAboutContact settings={settings} />
+          </>
+        )}
       </main>
       <SiteFooter settings={settings} />
       <CartDrawer settings={settings} />
       <FloatingActions settings={settings} />
-
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
     </CartProvider>
   )
 }

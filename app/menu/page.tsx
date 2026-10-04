@@ -1,4 +1,7 @@
-import type { Metadata } from 'next'
+'use client'
+
+import { useEffect, useState } from 'react'
+import { Loader2 } from 'lucide-react'
 
 import CartDrawer from '@/components/cart-drawer'
 import FloatingActions from '@/components/floating-actions'
@@ -8,18 +11,20 @@ import SiteHeader from '@/components/site-header'
 import { Badge } from '@/components/ui/badge'
 import { getSiteBundle } from '@/lib/api'
 import { CartProvider } from '@/lib/cart'
+import { fallbackBundle } from '@/lib/fallback-data'
+import type { SiteBundle } from '@/lib/types'
 
-export const revalidate = 0
-export const dynamic = 'force-static'
+export default function MenuPage() {
+  const [bundle, setBundle] = useState<SiteBundle>(fallbackBundle)
+  const [loading, setLoading] = useState(true)
 
-export const metadata: Metadata = {
-  title: 'المنيو — مصنعات ومشويات',
-  description:
-    'منيو جرجبيتا الكامل: مصنعات اللحوم والفراخ واللانشون والبسطرمة، ومشويات وطواجن وساندوتشات ومشروبات. اطلب على الواتساب.',
-}
+  useEffect(() => {
+    getSiteBundle().then(({ bundle: b }) => {
+      setBundle(b)
+      setLoading(false)
+    })
+  }, [])
 
-export default async function MenuPage() {
-  const { bundle } = await getSiteBundle()
   const { settings } = bundle
 
   return (
@@ -41,7 +46,16 @@ export default async function MenuPage() {
           </div>
 
           <div className="mt-10">
-            <MenuExplorer bundle={bundle} settings={settings} />
+            {loading ? (
+              <div className="flex items-center justify-center py-32">
+                <div className="flex flex-col items-center gap-4">
+                  <Loader2 className="size-10 animate-spin text-primary" />
+                  <p className="text-sm font-bold text-muted-foreground">جاري تحميل المنيو…</p>
+                </div>
+              </div>
+            ) : (
+              <MenuExplorer bundle={bundle} settings={settings} />
+            )}
           </div>
         </div>
       </main>

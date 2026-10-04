@@ -32,11 +32,11 @@ export function resolveAssetUrl(url?: string | null): string {
   return url
 }
 
-async function fetchJson<T>(path: string, revalidate = 60): Promise<T | null> {
+async function fetchJson<T>(path: string): Promise<T | null> {
   try {
     const response = await fetch(`${API_BASE_URL}${path}`, {
       headers: { Accept: 'application/json' },
-      next: { revalidate },
+      cache: 'no-store',
     })
     if (!response.ok) return null
 
@@ -50,7 +50,7 @@ async function fetchJson<T>(path: string, revalidate = 60): Promise<T | null> {
 
 /** حزمة الموقع كاملة (أو الاحتياطية عند تعذّر الاتصال) */
 export async function getSiteBundle(): Promise<{ bundle: SiteBundle; source: DataSource }> {
-  const bundle = await fetchJson<SiteBundle>('/api/site', 60)
+  const bundle = await fetchJson<SiteBundle>('/api/site')
   if (bundle?.settings && Array.isArray(bundle.categories) && bundle.categories.length > 0) {
     return { bundle, source: 'api' }
   }
