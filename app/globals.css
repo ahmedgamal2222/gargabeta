@@ -11,7 +11,7 @@
   --card-foreground: oklch(0.24 0.03 55);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.24 0.03 55);
-  --primary: oklch(0.5 0.19 150);
+  --primary: #15803d;
   --primary-foreground: oklch(0.99 0.01 120);
   --secondary: oklch(0.95 0.02 85);
   --secondary-foreground: oklch(0.28 0.03 55);
@@ -23,10 +23,11 @@
   --destructive-foreground: oklch(0.99 0.01 90);
   --border: oklch(0.9 0.02 80);
   --input: oklch(0.93 0.02 82);
-  --ring: oklch(0.5 0.19 150);
-  --brand-green: oklch(0.5 0.19 150);
-  --brand-green-deep: oklch(0.32 0.15 152);
-  --brand-green-bright: oklch(0.68 0.21 146);
+  --ring: #15803d;
+  /* أخضر جرجبيتا الأصلي — نفس درجة الأخضر المستخدمة في منصة المنيو الحقيقية */
+  --brand-green: #15803d;
+  --brand-green-deep: #14532d;
+  --brand-green-bright: #22c55e;
   --brand-orange: oklch(0.75 0.16 60);
   --brand-red: oklch(0.61 0.21 27);
   --brand-blue: oklch(0.7 0.13 235);
@@ -95,13 +96,13 @@
     overflow-x: clip;
     background-image:
       radial-gradient(38rem 38rem at 8% -8%, oklch(0.85 0.16 92 / 0.22), transparent 62%),
-      radial-gradient(34rem 34rem at 96% 4%, oklch(0.5 0.19 150 / 0.14), transparent 60%),
-      radial-gradient(30rem 30rem at 50% 110%, oklch(0.32 0.15 152 / 0.08), transparent 55%);
+      radial-gradient(34rem 34rem at 96% 4%, color-mix(in oklch, var(--brand-green) 14%, transparent), transparent 60%),
+      radial-gradient(30rem 30rem at 50% 110%, color-mix(in oklch, var(--brand-green-deep) 8%, transparent), transparent 55%);
     background-attachment: fixed;
   }
 
   ::selection {
-    background: oklch(0.5 0.19 150 / 0.25);
+    background: color-mix(in oklch, var(--brand-green) 25%, transparent);
     color: var(--foreground);
   }
 

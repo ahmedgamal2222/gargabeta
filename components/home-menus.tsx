@@ -174,7 +174,7 @@ export default function HomeMenus({ bundle, settings }: { bundle: SiteBundle; se
                   أصناف <span className="text-brand-gradient">الكل بيطلبها</span>
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-                  مختارات من المصنعات والمشويات — ضيفها للسلة مباشرة من هنا.
+                  مختارات من المشويات والبوكسات — ضيفها للسلة مباشرة من هنا.
                 </p>
               </div>
               <Button asChild variant="outline" className="gap-2">
@@ -208,34 +208,34 @@ export default function HomeMenus({ bundle, settings }: { bundle: SiteBundle; se
             </Badge>
             <h2 className="text-2xl font-black text-foreground sm:text-3xl">
               منيوين في مكان واحد:{' '}
-              <span className="text-brand-gradient">المصنعات والمطعم</span>
+              <span className="text-brand-gradient">المشويات والبوكسات</span>
             </h2>
             <p className="mx-auto mt-2 max-w-2xl text-sm text-muted-foreground">
-              مصنعات مجهّزة للبيت والفرن، وأطباق ساخنة من مطبخ جرجبيتا — اختار قسمك وابدأ الطلب.
+              ساندوتشات ومشويات تُحضَّر على الفحم فور الطلب، وبوكسات وإضافات جاهزة للعزومات — اختار قسمك وابدأ الطلب.
             </p>
           </div>
 
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
             <SectionPanel
-              title="منيو المصنعات"
-              description="سجق، كفتة، برجر، لانشون، بسطرمة وشاورما — تجهيز يومي وبمقادير مظبوطة."
-              icon={<Beef className="size-7" />}
-              categories={pickCategories('products')}
-              items={pickItems('products')}
-              settings={settings}
-              href="/menu#products"
-              tone="green"
-            />
-
-            <SectionPanel
-              title="منيو المطعم"
-              description="مشويات على الفحم، طواجن وفتة، وساندوتشات ساخنة في عيش بلدي."
+              title="الساندوتشات والمشويات"
+              description="كفتة، كباب، شيش طاووق، شيش تكا وكرسبي — تُشوى على الفحم وتُقدَّم ساخنة."
               icon={<UtensilsCrossed className="size-7" />}
               categories={pickCategories('restaurant')}
               items={pickItems('restaurant')}
               settings={settings}
               href="/menu#restaurant"
               tone="orange"
+            />
+
+            <SectionPanel
+              title="البوكسات والإضافات"
+              description="تشكيلات مشكّلة تكفي العزومات، وصوصات وأطباق جانبية تكمّل طلبك."
+              icon={<Beef className="size-7" />}
+              categories={pickCategories('products')}
+              items={pickItems('products')}
+              settings={settings}
+              href="/menu#products"
+              tone="green"
             />
           </div>
         </div>

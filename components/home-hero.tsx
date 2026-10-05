@@ -114,7 +114,7 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
 
           <Badge variant="solid" className="mb-5 gap-1.5 px-4 py-1.5 text-[13px]">
             <Sparkles className="size-3.5" />
-            لحوم طازجة • مصنعات • مشويات
+            مشويات على الفحم • ساندوتشات • بوكسات
           </Badge>
 
           <h1 className="text-3xl leading-snug font-black text-foreground sm:text-4xl lg:text-[3.2rem] lg:leading-tight">

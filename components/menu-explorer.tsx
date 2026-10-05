@@ -73,16 +73,16 @@ export default function MenuExplorer({
           [
             {
               key: 'restaurant' as MenuSection,
-              title: 'منيو المطعم',
+              title: 'الساندوتشات والمشويات',
               emoji: '🍢',
-              text: 'مشويات على الفحم • طواجن وفتة • ساندوتشات ومشروبات',
+              text: 'كفتة وكباب وشيش طاووق وشيش تكا — تُشوى على الفحم فور الطلب',
               count: counts.restaurant,
             },
             {
               key: 'products' as MenuSection,
-              title: 'منيو المصنعات',
+              title: 'البوكسات والإضافات',
               emoji: '🥩',
-              text: 'سجق وكفتة وبرجر • لانشون وبسطرمة • جاهز للتسوية',
+              text: 'تشكيلات مشكّلة للعزومات • صوصات وأطباق جانبية',
               count: counts.products,
             },
           ] as const
