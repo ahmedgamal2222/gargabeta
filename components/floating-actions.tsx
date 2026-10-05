@@ -17,7 +17,7 @@ export default function FloatingActions({ settings }: { settings: SiteSettings }
         href={generalWhatsappUrl(settings)}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex h-12 items-center gap-2 rounded-full bg-[#25D366] px-5 text-sm font-black text-white shadow-lg shadow-[#25D366]/40 hover:bg-[#20b859] transition-colors"
+        className="glow-pulse flex h-12 items-center gap-2 rounded-full bg-[#25D366] px-5 text-sm font-black text-white shadow-lg shadow-[#25D366]/40 hover:bg-[#20b859] transition-colors"
         aria-label="اطلب على الواتساب"
       >
         <svg viewBox="0 0 24 24" className="size-5 fill-current shrink-0" aria-hidden="true">

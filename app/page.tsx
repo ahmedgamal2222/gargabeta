@@ -10,6 +10,7 @@ import Hero from '@/components/home-hero'
 import HomeAboutContact from '@/components/home-about-contact'
 import HomeGallery from '@/components/home-gallery'
 import HomeMenus from '@/components/home-menus'
+import MarqueeStrip from '@/components/marquee-strip'
 import SiteFooter from '@/components/site-footer'
 import SiteHeader from '@/components/site-header'
 import { getSiteBundle } from '@/lib/api'
@@ -44,6 +45,7 @@ export default function HomePage() {
         ) : (
           <>
             <Hero settings={settings} />
+            <MarqueeStrip />
             <HomeMenus bundle={bundle} settings={settings} />
             <BranchesSection />
             <HomeGallery media={media} />

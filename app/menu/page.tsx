@@ -5,6 +5,7 @@ import { Loader2 } from 'lucide-react'
 
 import CartDrawer from '@/components/cart-drawer'
 import FloatingActions from '@/components/floating-actions'
+import MarqueeStrip from '@/components/marquee-strip'
 import MenuExplorer from '@/components/menu-explorer'
 import ShareMenuButton from '@/components/share-menu-button'
 import SiteFooter from '@/components/site-footer'
@@ -33,7 +34,8 @@ export default function MenuPage() {
       <SiteHeader settings={settings} />
 
       <main className="relative overflow-hidden pt-28 pb-8 sm:pt-32">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <MarqueeStrip />
+        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="text-center">
             <Badge variant="success" className="mb-3">
               المنيو الكامل

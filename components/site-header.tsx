@@ -87,7 +87,7 @@ export default function SiteHeader({ settings }: { settings: SiteSettings }) {
             ) : null}
           </button>
 
-          <Button asChild variant="whatsapp" size="sm" className="hidden sm:inline-flex">
+          <Button asChild variant="whatsapp" size="sm" className="glow-pulse hidden sm:inline-flex">
             <a href={generalWhatsappUrl(settings)} target="_blank" rel="noopener noreferrer">
               اطلب على الواتساب
             </a>

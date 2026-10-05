@@ -46,6 +46,18 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
       className="relative overflow-hidden pt-28 pb-16 sm:pt-32 lg:pt-36"
       style={{ minHeight: '95svh' }}
     >
+      {/* خلفية صورة كبيرة شفافة لإحساس احترافي أعمق */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]"
+        style={{
+          backgroundImage: `url(${HERO_SLIDES[0]?.src})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      />
+      <span aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-background/40" />
+
       {/* خلفيات زخرفية محسّنة */}
       <span
         aria-hidden
@@ -115,7 +127,7 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
 
           {/* أزرار الاتصال */}
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Button asChild variant="whatsapp" size="lg" className="h-12 gap-2 px-6 text-[15px] font-black shadow-lg hover:shadow-xl transition-shadow">
+            <Button asChild variant="whatsapp" size="lg" className="glow-pulse h-12 gap-2 px-6 text-[15px] font-black shadow-lg hover:shadow-xl transition-shadow">
               <a href={generalWhatsappUrl(settings)} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="size-5" />
                 اطلب على الواتساب

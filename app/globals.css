@@ -11,7 +11,7 @@
   --card-foreground: oklch(0.24 0.03 55);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.24 0.03 55);
-  --primary: oklch(0.58 0.19 148);
+  --primary: oklch(0.5 0.19 150);
   --primary-foreground: oklch(0.99 0.01 120);
   --secondary: oklch(0.95 0.02 85);
   --secondary-foreground: oklch(0.28 0.03 55);
@@ -23,9 +23,10 @@
   --destructive-foreground: oklch(0.99 0.01 90);
   --border: oklch(0.9 0.02 80);
   --input: oklch(0.93 0.02 82);
-  --ring: oklch(0.58 0.19 148);
-  --brand-green: oklch(0.58 0.19 148);
-  --brand-green-deep: oklch(0.4 0.15 150);
+  --ring: oklch(0.5 0.19 150);
+  --brand-green: oklch(0.5 0.19 150);
+  --brand-green-deep: oklch(0.32 0.15 152);
+  --brand-green-bright: oklch(0.68 0.21 146);
   --brand-orange: oklch(0.75 0.16 60);
   --brand-red: oklch(0.61 0.21 27);
   --brand-blue: oklch(0.7 0.13 235);
@@ -58,6 +59,7 @@
   --color-ring: var(--ring);
   --color-brand-green: var(--brand-green);
   --color-brand-green-deep: var(--brand-green-deep);
+  --color-brand-green-bright: var(--brand-green-bright);
   --color-brand-orange: var(--brand-orange);
   --color-brand-red: var(--brand-red);
   --color-brand-blue: var(--brand-blue);
@@ -145,6 +147,29 @@
       0 24px 56px -24px oklch(0.4 0.06 60 / 0.55),
       0 2px 0 0 oklch(0.98 0.01 85);
     transform: translateY(-3px);
+  }
+}
+
+@utility glow-pulse {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: inherit;
+    background: radial-gradient(circle, var(--brand-green-bright) 0%, transparent 70%);
+    opacity: 0;
+    z-index: -1;
+    animation: pulseSoft 2.4s ease-in-out infinite;
+  }
+}
+
+@utility marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+  &:hover {
+    animation-play-state: paused;
   }
 }
 
