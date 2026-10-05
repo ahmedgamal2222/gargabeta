@@ -3,7 +3,7 @@
  * مطابقة تمامًا لملف backend/src/types.ts.
  */
 
-export type MenuSection = 'restaurant' | 'products'
+export type MenuSection = 'restaurant' | 'products' | 'manufactured'
 
 export interface Category {
   id: number

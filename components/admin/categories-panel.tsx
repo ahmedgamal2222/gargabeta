@@ -134,8 +134,20 @@ export default function CategoriesPanel() {
                   <div className="min-w-0">
                     <p className="flex flex-wrap items-center gap-2 text-sm font-black text-foreground">
                       {category.nameAr}
-                      <Badge variant={category.section === 'products' ? 'success' : 'orange'}>
-                        {category.section === 'products' ? 'مصنعات' : 'المطعم'}
+                      <Badge
+                        variant={
+                          category.section === 'manufactured'
+                            ? 'red'
+                            : category.section === 'products'
+                              ? 'success'
+                              : 'orange'
+                        }
+                      >
+                        {category.section === 'manufactured'
+                          ? 'المصنّعات'
+                          : category.section === 'products'
+                            ? 'البوكسات والإضافات'
+                            : 'الساندوتشات والمشويات'}
                       </Badge>
                       {category.isActive === 0 ? <Badge variant="red">مخفي</Badge> : null}
                     </p>
@@ -214,8 +226,9 @@ export default function CategoriesPanel() {
                 value={form.section}
                 onChange={(event) => setForm({ ...form, section: event.target.value as MenuSection })}
               >
-                <option value="restaurant">منيو المطعم</option>
-                <option value="products">منيو المصنعات</option>
+                <option value="restaurant">الساندوتشات والمشويات</option>
+                <option value="products">البوكسات والإضافات</option>
+                <option value="manufactured">المصنّعات البلدي</option>
               </Select>
             </div>
             <div className="space-y-1.5">

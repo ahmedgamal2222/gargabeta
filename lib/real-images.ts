@@ -115,8 +115,8 @@ export interface RealCategory {
   descriptionAr: string
   icon: string
   image: string
-  /** تبويب العرض في الواجهة: المشويات والساندوتشات، أو البوكسات والإضافات */
-  section: 'restaurant' | 'products'
+  /** تبويب العرض في الواجهة: المشويات والساندوتشات، أو البوكسات، أو المصنّعات */
+  section: 'restaurant' | 'products' | 'manufactured'
   items: RealMenuItem[]
 }
 
@@ -195,8 +195,26 @@ const EXTRAS: RealCategory = {
   ],
 }
 
+/** المصنّعات البلدي — لحوم ومصنّعات طازجة تُجهَّز يوميًا (الصورة مؤقتًا شعار جرجبيتا) */
+const MANUFACTURED: RealCategory = {
+  slug: 'manufactured',
+  nameAr: 'المصنّعات البلدي',
+  nameEn: 'Processed Meats',
+  descriptionAr: 'لحوم ومصنّعات بلدي طازجة تُحضَّر يوميًا بتوابل جرجبيتا الخاصة — سجق، بسطرمة، كفتة وطرب.',
+  icon: 'beef',
+  section: 'manufactured',
+  image: REAL_LOGO_URL,
+  items: [
+    { nameAr: 'سجق بلدي', price: 180, unitAr: 'كيلو', descriptionAr: 'سجق بلدي طازج بتوابل جرجبيتا الخاصة.', image: img(RAW.sausage), isFeatured: 1, tagsAr: 'الأكثر طلبًا' },
+    { nameAr: 'بسطرمة بلدي', price: 320, unitAr: 'كيلو', descriptionAr: 'بسطرمة بلدي مغطاة بالحلبة على الطريقة الأصلية.', image: img(RAW.basturma), isFeatured: 1, tagsAr: 'مميز' },
+    { nameAr: 'كفتة بلدي', price: 260, unitAr: 'كيلو', descriptionAr: 'كفتة لحم بلدي مفرومة طازجة بمقادير مظبوطة.', image: img(RAW.koftaHati), isFeatured: 1, tagsAr: '' },
+    { nameAr: 'طرب محشي', price: 240, unitAr: 'كيلو', descriptionAr: 'طرب بلدي محشي جاهز للطهي.', image: img(RAW.tarb), isFeatured: 0, tagsAr: '' },
+    { nameAr: 'كبدة بلدي', price: 220, unitAr: 'كيلو', descriptionAr: 'كبدة بلدي طازجة متبّلة.', image: img(RAW.liverGrilled), isFeatured: 0, tagsAr: '' },
+  ],
+}
+
 /** حزمة المنيو الحقيقية الكاملة — جاهزة للتوليد المباشر في fallback-data.ts */
-export const REAL_MENU: RealCategory[] = [SANDWICHES_GRILLS, BOXES, EXTRAS]
+export const REAL_MENU: RealCategory[] = [SANDWICHES_GRILLS, BOXES, EXTRAS, MANUFACTURED]
 
 export interface BranchInfo {
   id: string

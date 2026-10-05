@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { useCart } from '@/lib/cart'
 import { resolveAssetUrl } from '@/lib/api'
+import { REAL_LOGO_URL } from '@/lib/real-images'
 import { cn } from '@/lib/utils'
 import type { Category, MenuItem, MenuSection, SiteBundle, SiteSettings } from '@/lib/types'
 
@@ -207,15 +208,15 @@ export default function HomeMenus({ bundle, settings }: { bundle: SiteBundle; se
               المنيو
             </Badge>
             <h2 className="text-2xl font-black text-foreground sm:text-3xl">
-              منيوين في مكان واحد:{' '}
-              <span className="text-brand-gradient">المشويات والبوكسات</span>
+              ثلاث قوائم في مكان واحد:{' '}
+              <span className="text-brand-gradient">المشويات والبوكسات والمصنّعات</span>
             </h2>
             <p className="mx-auto mt-2 max-w-2xl text-sm text-muted-foreground">
-              ساندوتشات ومشويات تُحضَّر على الفحم فور الطلب، وبوكسات وإضافات جاهزة للعزومات — اختار قسمك وابدأ الطلب.
+              ساندوتشات ومشويات تُحضَّر على الفحم فور الطلب، وبوكسات وإضافات للعزومات، ولحوم ومصنّعات بلدي طازجة — اختار قسمك وابدأ الطلب.
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <SectionPanel
               title="الساندوتشات والمشويات"
               description="كفتة، كباب، شيش طاووق، شيش تكا وكرسبي — تُشوى على الفحم وتُقدَّم ساخنة."
@@ -235,6 +236,24 @@ export default function HomeMenus({ bundle, settings }: { bundle: SiteBundle; se
               items={pickItems('products')}
               settings={settings}
               href="/menu#products"
+              tone="green"
+            />
+
+            <SectionPanel
+              title="المصنّعات البلدي"
+              description="لحوم ومصنّعات بلدي طازجة تُجهَّز يوميًا — سجق، بسطرمة، كفتة وطرب."
+              icon={
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={resolveAssetUrl(settings.logoUrl) || REAL_LOGO_URL}
+                  alt=""
+                  className="size-10 rounded-full object-contain"
+                />
+              }
+              categories={pickCategories('manufactured')}
+              items={pickItems('manufactured')}
+              settings={settings}
+              href="/menu#manufactured"
               tone="green"
             />
           </div>

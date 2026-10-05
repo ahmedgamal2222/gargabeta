@@ -8,6 +8,8 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useCart } from '@/lib/cart'
+import { resolveAssetUrl } from '@/lib/api'
+import { REAL_LOGO_URL } from '@/lib/real-images'
 import { cn } from '@/lib/utils'
 import type { MenuSection, SiteBundle, SiteSettings } from '@/lib/types'
 
@@ -26,10 +28,10 @@ export default function MenuExplorer({
   const [categoryId, setCategoryId] = useState<number | 'all'>('all')
   const [search, setSearch] = useState('')
 
-  // تحديد القسم من رابط الصفحة (#products / #restaurant)
+  // تحديد القسم من رابط الصفحة (#products / #restaurant / #manufactured)
   useEffect(() => {
     const hash = window.location.hash.replace('#', '')
-    if (hash === 'products' || hash === 'restaurant') setSection(hash)
+    if (hash === 'products' || hash === 'restaurant' || hash === 'manufactured') setSection(hash)
   }, [])
 
   const sectionCategories = useMemo(
@@ -56,6 +58,7 @@ export default function MenuExplorer({
   const counts = {
     restaurant: items.filter((entry) => entry.categorySection === 'restaurant').length,
     products: items.filter((entry) => entry.categorySection === 'products').length,
+    manufactured: items.filter((entry) => entry.categorySection === 'manufactured').length,
   }
 
   const switchSection = (next: MenuSection) => {
@@ -67,14 +70,15 @@ export default function MenuExplorer({
 
   return (
     <div className="space-y-6">
-      {/* ─── تبويب القسمين ─── */}
-      <div className="grid gap-3 sm:grid-cols-2">
+      {/* ─── تبويب الأقسام الثلاثة ─── */}
+      <div className="grid gap-3 sm:grid-cols-3">
         {(
           [
             {
               key: 'restaurant' as MenuSection,
               title: 'الساندوتشات والمشويات',
               emoji: '🍢',
+              image: undefined as string | undefined,
               text: 'كفتة وكباب وشيش طاووق وشيش تكا — تُشوى على الفحم فور الطلب',
               count: counts.restaurant,
             },
@@ -82,8 +86,17 @@ export default function MenuExplorer({
               key: 'products' as MenuSection,
               title: 'البوكسات والإضافات',
               emoji: '🥩',
+              image: undefined as string | undefined,
               text: 'تشكيلات مشكّلة للعزومات • صوصات وأطباق جانبية',
               count: counts.products,
+            },
+            {
+              key: 'manufactured' as MenuSection,
+              title: 'المصنّعات البلدي',
+              emoji: '🥓',
+              image: resolveAssetUrl(settings.logoUrl) || REAL_LOGO_URL,
+              text: 'لحوم ومصنّعات بلدي طازجة — سجق، بسطرمة، كفتة وطرب',
+              count: counts.manufactured,
             },
           ] as const
         ).map((tab) => (
@@ -100,13 +113,22 @@ export default function MenuExplorer({
             )}
           >
             <span className="flex items-center justify-between gap-3">
-              <span className="flex items-center gap-2">
-                <span className="text-xl">{tab.emoji}</span>
-                <span className="text-lg font-black text-foreground">{tab.title}</span>
+              <span className="flex min-w-0 items-center gap-2">
+                {tab.image ? (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={tab.image}
+                    alt=""
+                    className="size-8 shrink-0 rounded-full border border-border bg-white object-contain"
+                  />
+                ) : (
+                  <span className="text-xl">{tab.emoji}</span>
+                )}
+                <span className="truncate text-lg font-black text-foreground">{tab.title}</span>
               </span>
               <span
                 className={cn(
-                  'rounded-full px-3 py-1 text-[11px] font-bold',
+                  'shrink-0 rounded-full px-3 py-1 text-[11px] font-bold',
                   section === tab.key ? 'bg-primary text-primary-foreground' : 'bg-secondary text-foreground/70'
                 )}
               >
