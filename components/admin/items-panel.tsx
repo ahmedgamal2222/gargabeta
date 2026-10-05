@@ -35,7 +35,7 @@ export default function ItemsPanel() {
   const [categories, setCategories] = useState<Category[]>([])
   const [form, setForm] = useState(EMPTY_FORM)
   const [search, setSearch] = useState('')
-  const [sectionFilter, setSectionFilter] = useState<'all' | 'restaurant' | 'products'>('all')
+  const [sectionFilter, setSectionFilter] = useState<'all' | 'restaurant' | 'products' | 'manufactured'>('all')
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
 
@@ -168,12 +168,13 @@ export default function ItemsPanel() {
             <Select
               value={sectionFilter}
               onChange={(event) =>
-                setSectionFilter(event.target.value as 'all' | 'restaurant' | 'products')
+                setSectionFilter(event.target.value as 'all' | 'restaurant' | 'products' | 'manufactured')
               }
             >
               <option value="all">كل الأقسام</option>
-              <option value="restaurant">منيو المطعم</option>
-              <option value="products">منيو المصنعات</option>
+              <option value="restaurant">الساندوتشات والمشويات</option>
+              <option value="products">البوكسات والإضافات</option>
+              <option value="manufactured">المصنّعات البلدي</option>
             </Select>
           </div>
 
@@ -262,7 +263,12 @@ export default function ItemsPanel() {
                 <option value="0">— اختر —</option>
                 {categories.map((category) => (
                   <option key={category.id} value={category.id}>
-                    {category.section === 'products' ? 'مصنعات' : 'المطعم'} — {category.nameAr}
+                    {category.section === 'manufactured'
+                      ? 'المصنّعات'
+                      : category.section === 'products'
+                        ? 'البوكسات'
+                        : 'المطعم'}{' '}
+                    — {category.nameAr}
                   </option>
                 ))}
               </Select>
