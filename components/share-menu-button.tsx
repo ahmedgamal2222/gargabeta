@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Check, Copy, Share2 } from 'lucide-react'
+import { Check, Share2 } from 'lucide-react'
 import { toast } from 'sonner'
 
 import { Button, type ButtonProps } from '@/components/ui/button'
