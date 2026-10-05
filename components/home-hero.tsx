@@ -14,9 +14,12 @@ import {
 } from 'lucide-react'
 
 import BrandLogo from '@/components/brand-logo'
+import HeroSlider from '@/components/hero-slider'
+import ShareMenuButton from '@/components/share-menu-button'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { generalWhatsappUrl, resolveAssetUrl } from '@/lib/api'
+import { HERO_SLIDES } from '@/lib/real-images'
 import type { SiteSettings } from '@/lib/types'
 
 const HIGHLIGHTS = [
@@ -125,6 +128,8 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
                 تصفّح المنيو
               </Link>
             </Button>
+
+            <ShareMenuButton size="lg" className="h-12 px-6 text-[15px] font-bold" />
           </div>
 
           {/* معلومات سريعة */}
@@ -169,28 +174,21 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
             <div className="relative overflow-hidden rounded-[2rem] border border-border/60 bg-white p-3 soft-card">
               {/* الصورة الرئيسية */}
               <div className="relative grid aspect-[4/5] place-items-center overflow-hidden rounded-[1.6rem] bg-gradient-to-br from-brand-yellow/25 via-white to-brand-green/15 sm:aspect-[3/4]">
-                {!heroFailed && settings.heroImage ? (
-                  /* eslint-disable-next-line @next/next/no-img-element */
-                  <img
-                    src={resolveAssetUrl(settings.heroImage)}
-                    alt={settings.brandName}
-                    onError={() => setHeroFailed(true)}
-                    className="size-full object-cover"
-                  />
+                {settings.heroImage && settings.heroImage !== '/images/hero-meat.svg' ? (
+                  !heroFailed ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={resolveAssetUrl(settings.heroImage)}
+                      alt={settings.brandName}
+                      onError={() => setHeroFailed(true)}
+                      className="size-full object-cover"
+                    />
+                  ) : (
+                    <HeroSlider slides={HERO_SLIDES} />
+                  )
                 ) : (
-                  <div className="flex flex-col items-center gap-5 p-6 text-center">
-                    <BrandLogo src={settings.logoUrl} name={settings.brandName} size="xl" />
-                    <div>
-                      <p className="text-base font-black text-foreground/85">
-                        {settings.brandTagline}
-                      </p>
-                      <p className="mt-2 text-[12px] text-muted-foreground leading-relaxed">
-                        أضف صورة الواجهة من لوحة التحكم
-                        <br />
-                        (الإعدادات ← صورة الهيرو).
-                      </p>
-                    </div>
-                  </div>
+                  /* لا صورة مخصّصة بعد من لوحة التحكم — نعرض سلايدر صور جرجبيتا الحقيقية */
+                  <HeroSlider slides={HERO_SLIDES} />
                 )}
 
                 {/* بادج عائم فوق الصورة */}

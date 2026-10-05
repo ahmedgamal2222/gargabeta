@@ -15,6 +15,7 @@ const NAV_LINKS = [
   { label: 'الرئيسية', href: '/' },
   { label: 'المنيو', href: '/menu' },
   { label: 'المصنعات', href: '/menu#products' },
+  { label: 'فروعنا', href: '/#branches' },
   { label: 'المعرض', href: '/#gallery' },
   { label: 'عن جرجبيتا', href: '/#about' },
   { label: 'تواصل معنا', href: '/#contact' },

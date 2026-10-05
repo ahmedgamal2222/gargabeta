@@ -6,6 +6,7 @@ import { Loader2 } from 'lucide-react'
 import CartDrawer from '@/components/cart-drawer'
 import FloatingActions from '@/components/floating-actions'
 import MenuExplorer from '@/components/menu-explorer'
+import ShareMenuButton from '@/components/share-menu-button'
 import SiteFooter from '@/components/site-footer'
 import SiteHeader from '@/components/site-header'
 import { Badge } from '@/components/ui/badge'
@@ -43,6 +44,10 @@ export default function MenuPage() {
             <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
               ضيف أصنافك للسلة وابعت الطلب على الواتساب — {settings.deliveryNote}. {settings.minOrder}
             </p>
+
+            <div className="mt-5 flex items-center justify-center">
+              <ShareMenuButton />
+            </div>
           </div>
 
           <div className="mt-10">

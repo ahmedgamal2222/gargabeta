@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Loader2 } from 'lucide-react'
 
+import BranchesSection from '@/components/branches-section'
 import CartDrawer from '@/components/cart-drawer'
 import FloatingActions from '@/components/floating-actions'
 import Hero from '@/components/home-hero'
@@ -44,6 +45,7 @@ export default function HomePage() {
           <>
             <Hero settings={settings} />
             <HomeMenus bundle={bundle} settings={settings} />
+            <BranchesSection />
             <HomeGallery media={media} />
             <HomeAboutContact settings={settings} />
           </>

@@ -4,6 +4,8 @@ import { Toaster } from 'sonner'
 
 import './globals.css'
 
+import { REAL_LOGO_URL } from '@/lib/real-images'
+
 const cairo = Cairo({
   subsets: ['arabic', 'latin'],
   weight: ['400', '600', '700', '900'],
@@ -44,7 +46,7 @@ export const metadata: Metadata = {
     siteName: 'جرجبيتا',
     title: 'جرجبيتا | لحوم طازجة ومصنعات — أسوان',
     description: 'لحوم بلدي ومصنعات مجهّزة يوميًا + مشويات على الفحم. اطلب من الواتساب.',
-    images: ['/images/logo.svg'],
+    images: [REAL_LOGO_URL],
   },
   icons: {
     icon: '/images/logo.svg',
@@ -53,7 +55,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#8CC63F',
+  themeColor: '#1E8449',
   width: 'device-width',
   initialScale: 1,
 }

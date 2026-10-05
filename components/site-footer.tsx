@@ -29,6 +29,7 @@ export default function SiteFooter({ settings }: { settings: SiteSettings }) {
               { label: 'المنيو الكامل', href: '/menu' },
               { label: 'منيو المصنعات', href: '/menu#products' },
               { label: 'منيو المطعم', href: '/menu#restaurant' },
+              { label: 'فروعنا', href: '/#branches' },
               { label: 'المعرض والفيديوهات', href: '/#gallery' },
               { label: 'لوحة التحكم', href: '/admin' },
             ].map((link) => (

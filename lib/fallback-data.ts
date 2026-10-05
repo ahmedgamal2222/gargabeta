@@ -2,12 +2,13 @@
  * بيانات احتياطية مطابقة تمامًا لملف backend/seed.sql
  * تُستخدم إذا لم يكن الـ API (HonoJS + D1) متصلًا — فيعمل الموقع كاملًا دون باك-إند.
  */
+import { REAL_CATEGORY_PHOTOS, REAL_GALLERY_PHOTOS, REAL_LOGO_URL } from './real-images'
 import type { Category, MediaItem, MenuItem, SiteBundle, SiteSettings } from './types'
 
 export const fallbackSettings: SiteSettings = {
   brandName: 'جرجبيتا',
   brandTagline: 'لحوم طازجة ومصنعات — أسوان',
-  logoUrl: '/images/logo.svg',
+  logoUrl: REAL_LOGO_URL,
   heroTitle: 'لحوم بلدي طازجة ومصنعات على الطلب',
   heroSubtitle:
     'من قلب أسوان: مصنعات مجهّزة يوميًا، مشويات على الفحم، وتوصيل لحد باب البيت. اطلب من الواتساب في دقيقة.',
@@ -42,18 +43,8 @@ const categorySeed: CategorySeed[] = [
   [9, 'drinks', 'المشروبات', 'Drinks', 'مشروبات باردة وساخنة وعصائر طازجة.', 'restaurant', 'cup-soda'],
 ]
 
-/** صور المعاينة المؤقتة لكل قسم (تُستبدل بصور المطعم الحقيقية من لوحة التحكم) */
-const CATEGORY_PREVIEW: Record<number, string> = {
-  1: '/images/ph-meat.svg',
-  2: '/images/ph-chicken.svg',
-  3: '/images/ph-coldcut.svg',
-  4: '/images/ph-ready.svg',
-  5: '/images/ph-grill.svg',
-  6: '/images/ph-tagen.svg',
-  7: '/images/ph-sandwich.svg',
-  8: '/images/ph-side.svg',
-  9: '/images/ph-drink.svg',
-}
+/** صور حقيقية لكل قسم (من المنيو الفعلي) — تُستبدل بسهولة من لوحة التحكم */
+const CATEGORY_PREVIEW: Record<number, string> = REAL_CATEGORY_PHOTOS
 
 export const fallbackCategories: Category[] = categorySeed.map(
   ([id, slug, nameAr, nameEn, descriptionAr, section, icon], index) => ({
@@ -146,68 +137,18 @@ export const fallbackItems: MenuItem[] = itemSeed.map(
   }
 )
 
-export const fallbackMedia: MediaItem[] = [
-  {
-    id: 1,
-    type: 'photo',
-    titleAr: 'واجهة جرجبيتا',
-    descriptionAr: 'المحل من الخارج — استبدلها بصورة المحل من لوحة التحكم.',
-    url: '/images/ph-store.svg',
-    thumbnailUrl: '/images/ph-store.svg',
-    categoryId: null,
-    isFeatured: 1,
-    sortOrder: 1,
-    createdAt: '',
-  },
-  {
-    id: 2,
-    type: 'photo',
-    titleAr: 'تشكيلة المصنعات',
-    descriptionAr: 'سجق وكفتة وبرجر جاهزين على الطلب.',
-    url: '/images/ph-products.svg',
-    thumbnailUrl: '/images/ph-products.svg',
-    categoryId: null,
-    isFeatured: 1,
-    sortOrder: 2,
-    createdAt: '',
-  },
-  {
-    id: 3,
-    type: 'photo',
-    titleAr: 'على الفحم',
-    descriptionAr: 'المشويات تُحضَّر على الفحم بعد الطلب.',
-    url: '/images/ph-grill.svg',
-    thumbnailUrl: '/images/ph-grill.svg',
-    categoryId: null,
-    isFeatured: 1,
-    sortOrder: 3,
-    createdAt: '',
-  },
-  {
-    id: 5,
-    type: 'photo',
-    titleAr: 'صواني الفرن',
-    descriptionAr: 'صواني كفتة وحواوشي جاهزة للفرن.',
-    url: '/images/ph-ready.svg',
-    thumbnailUrl: '/images/ph-ready.svg',
-    categoryId: null,
-    isFeatured: 0,
-    sortOrder: 4,
-    createdAt: '',
-  },
-  {
-    id: 6,
-    type: 'photo',
-    titleAr: 'تجهيز الطلبات',
-    descriptionAr: 'فريق جرجبيتا يجهّز الطلبات للتوصيل.',
-    url: '/images/ph-kitchen.svg',
-    thumbnailUrl: '/images/ph-kitchen.svg',
-    categoryId: null,
-    isFeatured: 0,
-    sortOrder: 5,
-    createdAt: '',
-  },
-]
+export const fallbackMedia: MediaItem[] = REAL_GALLERY_PHOTOS.map((photo, index) => ({
+  id: index + 1,
+  type: 'photo' as const,
+  titleAr: photo.titleAr,
+  descriptionAr: photo.descriptionAr,
+  url: photo.url,
+  thumbnailUrl: photo.url,
+  categoryId: null,
+  isFeatured: index < 3 ? 1 : 0,
+  sortOrder: index + 1,
+  createdAt: '',
+}))
 
 /** الحزمة الكاملة للاستخدام عند عدم توفر الـ API. */
 export const fallbackBundle: SiteBundle = {
