@@ -60,11 +60,17 @@ export default function HeroSlider({
             loading={slideIndex === 0 ? 'eager' : 'lazy'}
             className={cn(
               'absolute inset-0 size-full object-cover transition-opacity duration-1000 ease-in-out',
-              slideIndex === index ? 'opacity-100' : 'opacity-0'
+              slideIndex === index ? 'opacity-100 animate-[kenburns_7s_ease-out_both]' : 'opacity-0'
             )}
           />
         )
       )}
+
+      {/* تدرّج خفيف أسفل الصورة لقراءة أوضح لأي نص فوقها */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink/35 to-transparent"
+      />
 
       {slides.length > 1 ? (
         <>

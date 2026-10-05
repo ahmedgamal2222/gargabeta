@@ -43,7 +43,7 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
   return (
     <section
       id="home"
-      className="relative overflow-hidden pt-28 pb-16 sm:pt-32 lg:pt-36"
+      className="relative overflow-hidden pt-32 pb-16 sm:pt-36 lg:pt-40"
       style={{ minHeight: '95svh' }}
     >
       {/* خلفية صورة كبيرة شفافة لإحساس احترافي أعمق */}
@@ -183,7 +183,7 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
               className="absolute inset-0 -z-10 rounded-[2.5rem] bg-gradient-to-br from-brand-green/25 via-brand-yellow/15 to-brand-orange/20 blur-2xl scale-110"
             />
 
-            <div className="relative overflow-hidden rounded-[2rem] border border-border/60 bg-white p-3 soft-card">
+            <div className="premium-border relative overflow-hidden rounded-[2rem] border border-border/60 bg-white p-3 soft-card">
               {/* الصورة الرئيسية */}
               <div className="relative grid aspect-[4/5] place-items-center overflow-hidden rounded-[1.6rem] bg-gradient-to-br from-brand-yellow/25 via-white to-brand-green/15 sm:aspect-[3/4]">
                 {settings.heroImage && settings.heroImage !== '/images/hero-meat.svg' ? (

@@ -2,7 +2,7 @@
  * بيانات احتياطية مطابقة تمامًا لملف backend/seed.sql
  * تُستخدم إذا لم يكن الـ API (HonoJS + D1) متصلًا — فيعمل الموقع كاملًا دون باك-إند.
  */
-import { REAL_CATEGORY_PHOTOS, REAL_GALLERY_PHOTOS, REAL_LOGO_URL } from './real-images'
+import { REAL_CATEGORY_PHOTOS, REAL_GALLERY_PHOTOS, REAL_ITEM_PHOTOS, REAL_LOGO_URL } from './real-images'
 import type { Category, MediaItem, MenuItem, SiteBundle, SiteSettings } from './types'
 
 export const fallbackSettings: SiteSettings = {
@@ -128,7 +128,7 @@ export const fallbackItems: MenuItem[] = itemSeed.map(
       descriptionAr,
       price,
       unitAr,
-      imageUrl: CATEGORY_PREVIEW[categoryId] ?? null,
+      imageUrl: REAL_ITEM_PHOTOS[nameAr] ?? CATEGORY_PREVIEW[categoryId] ?? null,
       isFeatured,
       isAvailable: 1,
       tagsAr,

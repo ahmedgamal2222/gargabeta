@@ -33,7 +33,7 @@ export default function MenuPage() {
     <CartProvider>
       <SiteHeader settings={settings} />
 
-      <main className="relative overflow-hidden pt-28 pb-8 sm:pt-32">
+      <main className="relative overflow-hidden pt-32 pb-8 sm:pt-36">
         <MarqueeStrip />
         <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="text-center">
