@@ -72,6 +72,18 @@ export const HERO_SLIDES: Array<{ src: string; alt: string }> = [
   { src: cld(RAW.sausage, 1000, 1250), alt: 'سجق بلدي جرجبيتا' },
 ]
 
+/**
+ * عناصر الشريط الأخضر المتحرك (Marquee) — صور مربّعة صغيرة بقصّ ذكي لتحميل سريع.
+ * القيم الافتراضية هنا تظهر فورًا، ويمكن لصاحب المطعم لاحقًا استبدالها من اللوحة.
+ */
+export const MARQUEE_TAGS: Array<{ label: string; image: string }> = [
+  { label: 'سجق بلدي', image: cld(RAW.koftaDouble, 160, 160) },
+  { label: 'كفتة دوبل', image: cld(RAW.kebabFillet, 160, 160) },
+  { label: 'مشويات على الفحم', image: cld(RAW.shishTawook, 160, 160) },
+  { label: 'شيش طاووق', image: cld(RAW.boxParty, 160, 160) },
+  { label: 'بوكس', image: cld(RAW.boxMood, 160, 160) },
+]
+
 /** صور معرض حقيقية — أبعاد 4:3 بقصّ ذكي */
 export const REAL_GALLERY_PHOTOS: Array<{ titleAr: string; descriptionAr: string; url: string }> = [
   { titleAr: 'استيك على الفحم', descriptionAr: 'قطع استيك مشوية على الفحم مباشرة.', url: cld(RAW.steak, 1000, 750) },

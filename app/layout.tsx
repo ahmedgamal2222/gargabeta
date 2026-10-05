@@ -49,8 +49,12 @@ export const metadata: Metadata = {
     images: [REAL_LOGO_URL],
   },
   icons: {
-    icon: '/images/logo.svg',
-    apple: '/images/logo.svg',
+    icon: [
+      { url: REAL_LOGO_URL, type: 'image/png' },
+      { url: '/images/logo.jpeg', type: 'image/jpeg' },
+    ],
+    shortcut: REAL_LOGO_URL,
+    apple: REAL_LOGO_URL,
   },
 }
 

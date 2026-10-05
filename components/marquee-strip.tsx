@@ -1,33 +1,45 @@
 import { Flame } from 'lucide-react'
 
-import { HERO_SLIDES } from '@/lib/real-images'
+import { MARQUEE_TAGS } from '@/lib/real-images'
 
-const DEFAULT_TAGS = [
-  { label: 'سجق بلدي', image: HERO_SLIDES[5]?.src },
-  { label: 'كفتة دوبل', image: HERO_SLIDES[2]?.src },
-  { label: 'مشويات على الفحم', image: HERO_SLIDES[1]?.src },
-  { label: 'شيش طاووق', image: HERO_SLIDES[4]?.src },
-  { label: 'بوكسات عزومة', image: HERO_SLIDES[3]?.src },
-  { label: 'استيك على الفحم', image: HERO_SLIDES[0]?.src },
-  { label: 'توصيل سريع داخل أسوان', image: undefined },
-]
+export interface MarqueeTag {
+  label: string
+  image?: string
+}
 
 /**
- * شريط متحرك (Marquee) أخضر بصور حقيقية مصغّرة لأشهى الأصناف + النص — يعطي
- * لمسة احترافية وحيوية بدل شريط فارغ بنص صغير فقط.
+ * شريط متحرك (Marquee) أخضر بصور حقيقية مصغّرة لأشهى الأصناف + النص.
+ *
+ * الحركة سلسة بلا فراغ: نكرّر العناصر حتى تملأ عرض الشاشة (content)، ثم نضاعف
+ * هذا المحتوى مرّتين تمامًا داخل المسار، والأنيميشن يتحرّك بمقدار 50% بالضبط —
+ * فعند انتهاء النسخة الأولى تبدأ الثانية في نفس اللحظة بلا أي قفزة أو فراغ.
  */
-export default function MarqueeStrip({ tags = DEFAULT_TAGS }: { tags?: Array<{ label: string; image?: string }> }) {
-  const doubled = [...tags, ...tags, ...tags]
+export default function MarqueeStrip({ tags = MARQUEE_TAGS }: { tags?: MarqueeTag[] }) {
+  const safeTags = tags.length > 0 ? tags : MARQUEE_TAGS
+
+  // كرّر العناصر لتملأ الشاشات العريضة، ثم ضاعف المحتوى (نسختان متطابقتان).
+  const content = [...safeTags, ...safeTags, ...safeTags]
+  const track = [...content, ...content]
 
   return (
     <div className="relative overflow-hidden border-y border-brand-green-deep/30 bg-gradient-to-r from-brand-green-deep via-brand-green to-brand-green-deep py-3 shadow-[inset_0_2px_10px_rgba(0,0,0,0.15)]">
-      {/* بريق خفيف متحرك فوق الشريط لإحساس أكثر حيوية */}
+      {/* بريق خفيف فوق الشريط لإحساس أكثر حيوية */}
       <span
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-gradient-to-l from-white/0 via-white/10 to-white/0"
       />
+      {/* تلاشٍ ناعم عند الحافتين */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 start-0 z-10 w-12 bg-gradient-to-r from-brand-green-deep to-transparent"
+      />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 end-0 z-10 w-12 bg-gradient-to-l from-brand-green-deep to-transparent"
+      />
+
       <div className="marquee-track gap-6">
-        {doubled.map((tag, index) => (
+        {track.map((tag, index) => (
           <span
             key={`${tag.label}-${index}`}
             className="flex shrink-0 items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 text-[12px] font-bold text-white shadow-sm backdrop-blur-sm sm:text-sm"
@@ -37,6 +49,7 @@ export default function MarqueeStrip({ tags = DEFAULT_TAGS }: { tags?: Array<{ l
               <img
                 src={tag.image}
                 alt=""
+                loading="lazy"
                 className="size-6 shrink-0 rounded-full border-2 border-white/50 object-cover"
               />
             ) : (
